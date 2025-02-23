@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from '../../services/firebase';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log('Login', { email, password });
 
-    navigate('/dashboard');
+    try {
+      console.log('Login', { email, password });
+      await signInWithEmailAndPassword(auth, email, password);
+      console.log('Successfully logged!');
+      navigate('/dashboard');
+    } catch (error) {
+      console.error('Authentication error', error.message);
+      alert('Wrong credentials');
+    } 
 
     // Authentication logic
     // if (username === 'user' && password === 'password') {
@@ -22,7 +30,7 @@ const Login = () => {
 
   return (
     <div style={styles.container}>
-      <h2>Inicio de Sesión</h2>
+      <h2>Login</h2>
       <form onSubmit={handleLogin} style={styles.form}>
         <input
           type="email"
@@ -42,7 +50,7 @@ const Login = () => {
         />
         <button type="submit" style={styles.button}>Login</button>
       </form>
-      <Link to="/forgot-password" style={styles.link}>¿Forgot Password?</Link>
+      <Link to="/forgot-password" style={styles.link}>Forgot Password?</Link>
     </div>
   );
 };
