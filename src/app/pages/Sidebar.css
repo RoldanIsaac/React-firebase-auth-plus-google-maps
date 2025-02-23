@@ -1,0 +1,57 @@
+/* Estilos básicos del sidebar */
+.sidebar {
+   width: 250px;
+   height: 100vh;
+   background-color: #2c3e50;
+   color: white;
+   position: fixed;
+   transition: transform 0.3s ease;
+}
+
+.sidebar.closed {
+   transform: translateX(-100%);
+}
+
+.sidebar.open {
+   transform: translateX(0);
+}
+
+.sidebar-header {
+   padding: 20px;
+   background-color: #34495e;
+   text-align: center;
+}
+
+.toggle-btn {
+   background-color: #ecf0f1;
+   color: #2c3e50;
+   padding: 10px;
+   border: none;
+   cursor: pointer;
+   border-radius: 5px;
+}
+
+.sidebar-content {
+   padding: 20px;
+   font-size: 18px;
+}
+
+.sidebar-content ul {
+   list-style-type: none;
+   padding: 0;
+}
+
+.sidebar-content ul li {
+   margin-bottom: 20px;
+}
+
+.sidebar-content ul li a {
+   color: white;
+   text-decoration: none;
+   font-weight: bold;
+   transition: color 0.3s ease;
+}
+
+.sidebar-content ul li a:hover {
+   color: #3498db;
+}

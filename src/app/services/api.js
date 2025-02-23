@@ -1,8 +1,11 @@
-const API_URL = 'http://localhost:8080/api/posts';
+const API_URL = "http://localhost:8000/api/posts";
 
-const getAll = async () => {
+export const getAll = async () => {
    try {
       const res = await fetch(API_URL);
+      if (!res.ok) {
+         throw new Error('Failed to fetch posts');
+      }
       const data = await res.json();
       return data;
    } catch (error) {
@@ -11,7 +14,7 @@ const getAll = async () => {
    }
 }
  
-const getOne = async (id) => {
+export const getOne = async (id) => {
    try {
       const res = await fetch(`${API_URL}/${id}`);
       const data = await res.json();
@@ -22,7 +25,7 @@ const getOne = async (id) => {
    }
 }
  
-const createOne = async (data) => {
+export const createOne = async (data) => {
    try {
       const res = await fetch(API_URL, {
          method: 'POST',
@@ -41,7 +44,7 @@ const createOne = async (data) => {
 }
  
  
-const updateOne = async (data, id) => {
+export const updateOne = async (data, id) => {
    try {
       const res = await fetch(`${API_URL}/${id}`, {
          method: 'PUT',
@@ -59,7 +62,7 @@ const updateOne = async (data, id) => {
    }
 }
  
-const deleteOne = async (id) => {
+export const deleteOne = async (id) => {
    try {
       const res = await fetch(`${API_URL}/${id}`, {
          method: 'DELETE'
@@ -69,11 +72,11 @@ const deleteOne = async (id) => {
       throw error;
    }
 }
- 
-export default {
-   getAll,
-   getOne,
-   createOne,
-   updateOne,
-   deleteOne,
-}
+
+// export default {
+//    getAll,
+//    getOne,
+//    createOne,
+//    updateOne,
+//    deleteOne,
+// }

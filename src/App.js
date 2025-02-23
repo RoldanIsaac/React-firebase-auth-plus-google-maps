@@ -1,26 +1,10 @@
-import { useEffect } from "react";
-import { getAll, getOne, createOne, updateOne, deleteOne } from "./services/api";
-
-useEffect(() => {
-  const getPosts = async () => {
-    const postsFromServer = await getAll();
-    setPosts(postsFromServer);
-  }
-  getPosts();
-}) 
-
-posts = []
-
-const setPosts = (posts) => {
-  posts = posts;
-}
-
+import React from 'react';
+import Home from './app/pages/Home' ;
 
 function App() {
+  
   return (
-    <div className="App">
-      
-    </div>
+    <Home />
   );
 }
 
